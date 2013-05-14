@@ -1,0 +1,25 @@
+<html>
+  <body>
+    {% for issue in issues %}
+      <i>{{ issue.priority }}</i>
+      {% if issue.reporter %}
+        <b>{{ issue.reporter.nickname }}</b> wrote:
+      {% else %}
+        An anonymous person wrote:
+      {% endif %}
+      <blockquote>{{ issue.description|escape }}</blockquote>
+    {% endfor %}
+
+    <form action="/report" method="post">
+      <div><textarea name="title" rows="1" cols="60">First Value</textarea></div>
+      <div><textarea name="priority" rows="1" cols="2">1</textarea></div>
+      <div><textarea name="description" rows="3" cols="60">This is first test value</textarea></div>
+      <div><input type="submit" value="Sign Guestbook"></div>
+      <hr/>
+      <form>Guestbook name: <input value="abc" name="project_name">
+      <input type="submit" value="switch"></form>
+    </form>
+
+    <a href="{{ url }}">{{ url_linktext }}</a>
+  </body>
+</html>
